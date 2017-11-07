@@ -1,0 +1,71 @@
+<html>
+
+<head>
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<title>RadarRekay Walkthrough & Thoughts</title>
+</head>
+
+<style>
+
+body{
+	text-align: center;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	width: 50%;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 1.75em;
+}
+
+h1{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 400;
+}
+
+#date{
+	font-style: italic;
+}
+
+</style>
+
+<body>
+
+	<img src="./img/radar_relay.png">
+
+	<h1 id="header">Deploy Ethereum Miners on EC2 & Configure ETHStats</h1>
+
+	<p id="date"> 10.23.2017 </p>
+
+	<p> <a href="radarrelay.com">RadarRelay</a> is a decentrazlied exchange that uses the 0x protocol, or otherwise reffered to as a <b>0x Relayer</b>. RadarRelay is essentially a matching and aggregration engine for orders or trades placed on the 0x protocol. There are many 0x relayers currently in development. However, RadarRelay currently seems to be the only one fully functional on the main Ethereum network with a varity if tokens to swap in-between. </p>
+
+	<p> Judging from <a href="0xtrades.info">0xtrades.info</a> and <a href="0xtracker.com">0xtracker.com</a>, RadarRelay seems to be doing ~95%, if not almost all of the volume on the 0x protocol. There are some occasional direct swaps not being faciliated by relayers, but right now these sites could temporarly be re-named RadarRelay Explorer.</p>
+
+	<p>When you get started with RadarRelay, you'll see the need for W-ETH. 
+
+	<b>W-ETH</b> is "wrapped ETH", an ERC20 token on Ethereum that represents real Ether. When you "wrap" ETH, you aren't actually wrapping anything. What you're doing is converting ETH for an equal token called W-ETH via a smart contract. To get regular ETH back, you "unwrap" it, aka just trade it back for plain ETH. Suprisingly enough, ETH isn't ERC20 compliant, and having W-ETH allows you to have ETH value in an ERC20 token swap. <a href="https://weth.io/">You can read more about W-ETH here.</a>
+
+	</p>
+
+
+<!-- 	<div class="col-lg-6">
+	
+	<h2>Pros:</h2>
+	
+	</div>
+
+	<div class="col-lg-6">
+	
+	<h2>Cons:</h2>
+	
+	</div> -->
+
+<!-- 
+		<iframe src="https://player.vimeo.com/video/237329168?color=33ff99&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
+
+
+</body>
+
+</html>

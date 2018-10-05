@@ -1,0 +1,27 @@
+table {
+     text-align: center;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 1.5em;
+}
+
+td {
+     padding: .5em;
+     padding-left: 2.5em;
+     padding-right: 2.5em;
+}
+
+h1 {
+     text-align: center;
+     margin-left: auto;
+     margin-right: auto;
+     margin-top: 1.5em;
+     margin-bottom: 1.5em;
+}
+
+hr {
+     width: 30%;
+     margin-left: auto;
+     margin-right: auto;
+     margin-bottom: 3em;
+}

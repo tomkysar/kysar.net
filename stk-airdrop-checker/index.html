@@ -1,95 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STK - Early ETH Bulk Checker</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin-top:3rem;
-        }
-        #container {
-            max-width: 20%;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #f9f9f9;
-        }
-        textarea {
-            width: calc(100% - 10px);
-            height: 150px;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: vertical;
-        }
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: #fff;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #0056b3;
-        }
-        .result {
-            margin-top: 10px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-        }
+      body {
+        font-family: monospace, sans-serif;
+        margin-top: 3rem;
+        background-color: black;
+        color: white;
+      }
+
+      #container {
+        max-width: 35rem;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        color: black;
+      }
+
+      textarea {
+        width: calc(100% - 10px);
+        height: 150px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+      }
+
+      input[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #0056b3;
+      }
+
+      .result {
+        margin-top: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+
+      a:link {
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:visited {
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:hover {
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: white;
+        background-color: transparent;
+        text-decoration: underline;
+      }
     </style>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-YEX8R2F84H"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
 
-        gtag('config', 'G-YEX8R2F84H');
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-YEX8R2F84H');
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="container">
-        <h2 style="margin-bottom:2rem;text-align:center;">STK - Early ETH Bulk Checker</h2>
-        <form id="addressForm">
-            <textarea id="addressInput" placeholder="Enter Addresses (one per line)"></textarea>
-            <input type="submit" value="Search">
-        </form>
-        <div id="resultContainer" class="result"></div>
+      <h2 style="margin-bottom:2rem;text-align:center;">$STK - Early ETH Bulk Checker</h2>
+      <form id="addressForm">
+        <textarea id="addressInput" placeholder="Enter Addresses (one per line)"></textarea>
+        <input type="submit" value="Search" style="background-color:black;color:white">
+      </form>
+      <div id="resultContainer" class="result"></div>
     </div>
-    <h3 style="text-align: center;"> Try <a href="https://gas.zip">Gas.zip</a></h3>
-
+    <h3 style="text-align: center;"> Try <a href="https://gas.zip">Gas.zip</a>
+    </h3>
     <script>
-        document.getElementById("addressForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            var addresses = document.getElementById("addressInput").value.trim().split("\n").map(address => address.trim().toLowerCase());
-            if (addresses.length === 0) {
-                alert("Please enter at least one address.");
-                return;
-            }
-
-            fetch("https://raw.githubusercontent.com/FlipsiderEfer/Ethereum-Early-Adopters/main/Assets/Total.json")
-                .then(response => response.json())
-                .then(data => {
-                    var results = addresses.map(address => {
-                        var found = data.find(item => item.USER.toLowerCase() === address);
-                        return found ? "<p>" + found.USER + ", " + found["NUMBER OF CONTRACTS"] + "</p>" : "";
-                    });
-
-                    document.getElementById("resultContainer").innerHTML = results.join("");
-                })
-                .catch(error => {
-                    console.error("Error fetching data:", error);
-                    document.getElementById("resultContainer").innerHTML = "<p>There was an error fetching data.</p>";
-                });
+      document.getElementById("addressForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        var addresses = document.getElementById("addressInput").value.trim().split("\n").map(address => address.trim().toLowerCase());
+        if (addresses.length === 0) {
+          alert("Please enter at least one address.");
+          return;
+        }
+        fetch("https://raw.githubusercontent.com/FlipsiderEfer/Ethereum-Early-Adopters/main/Assets/Total.json").then(response => response.json()).then(data => {
+          var results = addresses.map(address => {
+            var found = data.find(item => item.USER.toLowerCase() === address);
+            return found ? " < p > " + found.USER + ", " + found["
+            NUMBER OF CONTRACTS "] + " < /p>" : "";
+          });
+          document.getElementById("resultContainer").innerHTML = results.join("");
+        }).catch(error => {
+          console.error("Error fetching data:", error);
+          document.getElementById("resultContainer").innerHTML = " < p > There was an error fetching data. < /p>";
         });
+      });
     </script>
-</body>
+  </body>
 </html>
